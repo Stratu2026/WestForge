@@ -128,7 +128,7 @@ img {
         rgba(0, 0, 0, 0.88),
         rgba(0, 0, 0, 0.48)
       ),
-      url("/hero-mobile.jpg") !important;
+      url("/hero-mobile.webp") !important;
     background-position: center center !important;
     background-size: cover !important;
   }
