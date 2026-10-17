@@ -63,7 +63,7 @@ export default function Home() {
           alignItems: "center",
           backgroundColor: "#202020",
           backgroundImage:
-            "linear-gradient(90deg, rgba(0,0,0,.90) 0%, rgba(0,0,0,.70) 45%, rgba(0,0,0,.20) 100%), url('/hero-desktop.jpg')",
+            "linear-gradient(90deg, rgba(0,0,0,.90) 0%, rgba(0,0,0,.70) 45%, rgba(0,0,0,.20) 100%), url('/hero-desktop.webp')",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
