@@ -44,7 +44,7 @@ export default function Home() {
           }}
         >
           <Link href="/" style={{ fontSize: 24, fontWeight: 900 }}>
-            WEST<span style={{ color: "#d91f2b" }}>FORGE</span>
+            WEST<span style={{ color: "#e00000" }}>FORGE</span>
           </Link>
 
           <nav style={{ display: "flex", gap: 18, fontSize: 13 }}>
@@ -58,15 +58,15 @@ export default function Home() {
         className="hero"
         style={{
           position: "relative",
-          minHeight: 380,
+          minHeight: 650,
           display: "flex",
           alignItems: "center",
           backgroundColor: "#202020",
           backgroundImage:
-            "linear-gradient(90deg, rgba(0,0,0,.90) 0%, rgba(0,0,0,.70) 45%, rgba(0,0,0,.20) 100%), url('/hero-desktop.webp')",
-          backgroundPosition: "center",
-          backgroundSize: "contain",
-backgroundRepeat: "no-repeat",
+            "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.48) 40%, rgba(0,0,0,.08) 100%), url('/hero-desktop.webp')",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div
@@ -74,14 +74,14 @@ backgroundRepeat: "no-repeat",
           style={{
             position: "relative",
             zIndex: 1,
-            paddingTop: 32,
-            paddingBottom: 32,
+            paddingTop: 40,
+            paddingBottom: 40,
           }}
         >
           <div style={{ maxWidth: 630 }}>
             <p
               style={{
-                color: "#ff5260",
+                color: "#ff2020",
                 fontSize: 12,
                 fontWeight: 800,
                 letterSpacing: 2,
@@ -100,7 +100,7 @@ backgroundRepeat: "no-repeat",
             >
               Производство
               <br />
-              <span style={{ color: "#ff4351" }}>
+              <span style={{ color: "#ff2020" }}>
                 сельскохозяйственной
               </span>
               <br />
@@ -109,7 +109,7 @@ backgroundRepeat: "no-repeat",
 
             <p
               style={{
-                color: "#e1e1e1",
+                color: "#ffffff",
                 fontSize: 15,
                 lineHeight: 1.6,
                 maxWidth: 490,
@@ -169,14 +169,12 @@ backgroundRepeat: "no-repeat",
           grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 14px;
         }
-
         .product-card {
           overflow: hidden;
           border-radius: 14px;
           background: #1b1b1b;
           border: 1px solid #333;
         }
-
         .product-placeholder {
           height: 140px;
           display: flex;
@@ -185,50 +183,25 @@ backgroundRepeat: "no-repeat",
           background: #282828;
           font-size: 46px;
         }
-
-        .product-content {
-          padding: 14px;
-        }
-
-        .product-content h3 {
-          margin: 0 0 8px;
-          font-size: 16px;
-        }
-
+        .product-content { padding: 14px; }
+        .product-content h3 { margin: 0 0 8px; font-size: 16px; }
         .product-content p {
           margin: 0;
           color: #bdbdbd;
           font-size: 13px;
           line-height: 1.5;
         }
-
         @media (max-width: 800px) {
           .product-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
-
         @media (max-width: 640px) {
-          .product-grid {
-            gap: 10px;
-          }
-
-          .product-placeholder {
-            height: 105px;
-            font-size: 36px;
-          }
-
-          .product-content {
-            padding: 10px;
-          }
-
-          .product-content h3 {
-            font-size: 14px;
-          }
-
-          .product-content p {
-            font-size: 12px;
-          }
+          .product-grid { gap: 10px; }
+          .product-placeholder { height: 105px; font-size: 36px; }
+          .product-content { padding: 10px; }
+          .product-content h3 { font-size: 14px; }
+          .product-content p { font-size: 12px; }
         }
       `}</style>
     </main>
