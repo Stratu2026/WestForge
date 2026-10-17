@@ -55,6 +55,7 @@ export default function Home() {
       </header>
 
       <section
+        className="hero"
         style={{
           position: "relative",
           minHeight: 380,
