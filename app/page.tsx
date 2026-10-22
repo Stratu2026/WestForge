@@ -1,3 +1,419 @@
+"use client";
+
+import { useState } from "react";
+
+import Link from "next/link";
+
+const products = [
+  {
+    title: "Плёнкоукладчик 1",
+    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
+    icon: "🚜",
+    image: "/1.png",
+  },
+  {
+    title: "Плёнкоукладчик 2",
+    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
+    icon: "🚜",
+    image: "/2.webp",
+  },
+  {
+    title: "Плёнкоукладчик 3",
+    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
+    icon: "🚜",
+    image: "/3.webp",
+  },
+  {
+    title: "Садовые платформы",
+    description: "Платформы для работы в садах и сбора урожая.",
+    icon: "🌳",
+  },
+  {
+    title: "Садовые тележки",
+    description: "Транспортировка контейнеров и урожая.",
+    icon: "🛞",
+  },
+  {
+    title: "Изготовление на заказ",
+    description:
+      "Адаптация оборудования под ваши задачи после технической оценки.",
+    icon: "⚙️",
+  },
+];
+
+export default function Home() {
+  type RequestItem = { id: number; title: string; quantity: number; requirements: string };
+  const [cart, setCart] = useState<RequestItem[]>([]);
+  const [nextId, setNextId] = useState(1);
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerComment, setCustomerComment] = useState("");
+  const [showCart, setShowCart] = useState(false);
+
+  function addToRequest(title: string) {
+    setCart((previous) => [...previous, { id: nextId, title, quantity: 1, requirements: "" }]);
+    setNextId((id) => id + 1);
+    setShowCart(true);
+  }
+
+  return (
+    <main>
+      <header
+        style={{
+          background: "#111",
+          borderBottom: "1px solid #333",
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            minHeight: 64,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+          }}
+        >
+          <Link href="/" style={{ fontSize: 24, fontWeight: 900 }}>
+            WEST<span style={{ color: "#e00000" }}>FORGE</span>
+          </Link>
+
+          <nav style={{ display: "flex", gap: 18, fontSize: 13 }}>
+            <a href="#products">Продукция</a>
+            <a href="#contacts">Контакты</a>
+          </nav>
+        </div>
+      </header>
+
+      <section
+        className="hero"
+        style={{
+          position: "relative",
+          minHeight: 650,
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "#202020",
+          backgroundImage:
+            "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.48) 40%, rgba(0,0,0,.08) 100%), url('/hero-desktop.webp')",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            position: "relative",
+            zIndex: 1,
+            paddingTop: 40,
+            paddingBottom: 40,
+          }}
+        >
+          <div style={{ maxWidth: 630 }}>
+            <p
+              style={{
+                color: "#ff2020",
+                fontSize: 12,
+                fontWeight: 800,
+                letterSpacing: 2,
+              }}
+            >
+              WESTFORGE • MOLDOVA
+            </p>
+
+            <h1
+              style={{
+                fontSize: "clamp(27px, 4vw, 48px)",
+                lineHeight: 1.12,
+                letterSpacing: "-0.04em",
+                margin: "14px 0",
+              }}
+            >
+              Производство
+              <br />
+              <span style={{ color: "#ff2020" }}>
+                сельскохозяйственной
+              </span>
+              <br />
+              техники
+            </h1>
+
+            <p
+              style={{
+                color: "#ffffff",
+                fontSize: 15,
+                lineHeight: 1.6,
+                maxWidth: 490,
+                marginBottom: 22,
+              }}
+            >
+              Плёнкоукладчики, садовые платформы, тележки
+              и оборудование для вашего хозяйства.
+              Собственное производство в Молдове.
+            </p>
+
+            <div className="hero-buttons">
+              <a className="btn btn-primary" href="#products">
+                Наша продукция →
+              </a>
+              <a className="btn btn-outline" href="#contacts">
+                Связаться с нами
+              </a>
+            </div>
+
+            <div className="hero-custom-box">
+              <p className="hero-custom-label">
+                ИНДИВИДУАЛЬНЫЕ РЕШЕНИЯ
+              </p>
+
+              <h2>
+                Техника под{" "}
+                <span>ваши задачи</span>
+              </h2>
+
+              <p>
+                Адаптируем оборудование под ваши размеры
+                и условия работы —{" "}
+                <strong>
+                  после технической оценки и согласования.
+                </strong>
+              </p>
+
+              <a href="#contacts">
+                Обсудить индивидуальный заказ →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="quality-section">
+        <div className="container">
+          <div className="quality-box">
+            <div className="quality-icon">✓</div>
+
+            <div>
+              <h2>
+                Надёжность{" "}
+                <span>важнее обещаний</span>
+              </h2>
+
+              <p>
+                Мы рассматриваем индивидуальные заказы,
+                но предлагаем только те технические решения,
+                в работоспособности и надёжности которых
+                уверены.
+              </p>
+
+              <p>
+                <strong>
+                  Каждый проект предварительно оцениваем
+                  и согласовываем с заказчиком.
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" className="section">
+        <div className="container">
+          <h2 className="section-title">
+            Наша продукция
+          </h2>
+
+          <div className="product-grid">
+            {products.map((product) => (
+              <article
+                className="product-card"
+                key={product.title}
+              >
+                <div className="product-placeholder">
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    />
+                  ) : (
+                    <span>{product.icon}</span>
+                  )}
+                </div>
+
+                <div className="product-content">
+                  <h3>{product.title}</h3>
+                  <p>{product.description}</p>
+                  {product.image && (
+                    <>
+                      <p style={{ marginTop: 12, color: "#ff5757", fontWeight: 700 }}>
+                        Стоимость по запросу
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => addToRequest(product.title)}
+                        style={{ marginTop: 14, width: "100%", border: 0, borderRadius: 8, padding: "12px 10px", background: "#e02020", color: "#fff", fontWeight: 800, cursor: "pointer" }}
+                      >
+                        Добавить в заявку +
+                      </button>
+                    </>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {cart.length > 0 && (
+        <section className="section" aria-label="Корзина-заявка" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <div style={{ background: "#1b1b1b", border: "1px solid #444", borderRadius: 14, padding: 20 }}>
+              <button type="button" onClick={() => setShowCart(!showCart)} style={{ color: "white", background: "transparent", border: 0, fontSize: 19, fontWeight: 800, cursor: "pointer" }}>
+                🛒 Ваша заявка ({cart.length}) {showCart ? "−" : "+"}
+              </button>
+              {showCart && (
+                <div style={{ marginTop: 14 }}>
+                  {cart.map((item) => (
+                    <div key={item.id} style={{ padding: "16px 0", borderBottom: "1px solid #383838" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                        <strong>{item.title}</strong>
+                        <button type="button" onClick={() => setCart((items) => items.filter((x) => x.id !== item.id))} style={{ background: "transparent", color: "#ff6666", border: 0, cursor: "pointer" }}>Удалить</button>
+                      </div>
+                      <label style={{ display: "block", marginTop: 12, color: "#ddd", fontSize: 13 }}>
+                        Количество
+                        <input type="number" min={1} max={100} value={item.quantity}
+                          onChange={(e) => setCart((items) => items.map((x) => x.id === item.id ? { ...x, quantity: Math.max(1, Math.min(100, Number(e.target.value) || 1)) } : x))}
+                          style={{ display: "block", marginTop: 5, width: 90, padding: 10, borderRadius: 8, border: "1px solid #555", background: "#292929", color: "white" }} />
+                      </label>
+                      <label style={{ display: "block", marginTop: 12, color: "#ddd", fontSize: 13 }}>
+                        Какие операции должна выполнять машина?
+                        <textarea value={item.requirements} rows={3}
+                          onChange={(e) => setCart((items) => items.map((x) => x.id === item.id ? { ...x, requirements: e.target.value } : x))}
+                          placeholder="Опишите нужные функции, ширину, условия работы и другие пожелания"
+                          style={{ display: "block", marginTop: 5, width: "100%", padding: 10, borderRadius: 8, border: "1px solid #555", background: "#292929", color: "white", resize: "vertical", font: "inherit" }} />
+                      </label>
+                    </div>
+                  ))}
+                  <h3 style={{ marginTop: 20, marginBottom: 12 }}>Контактные данные</h3>
+                  <div style={{ display: "grid", gap: 12, maxWidth: 550 }}>
+                    <label>Имя
+                      <input value={customerName} onChange={(e) => setCustomerName(e.target.value)} placeholder="Как к вам обращаться" autoComplete="name" style={{ display: "block", width: "100%", marginTop: 5, padding: 11, borderRadius: 8, border: "1px solid #555", background: "#292929", color: "white" }} />
+                    </label>
+                    <label>Телефон
+                      <input value={customerPhone} onChange={(e) => setCustomerPhone(e.target.value)} placeholder="+373 ..." type="tel" autoComplete="tel" style={{ display: "block", width: "100%", marginTop: 5, padding: 11, borderRadius: 8, border: "1px solid #555", background: "#292929", color: "white" }} />
+                    </label>
+                    <label>Комментарий (необязательно)
+                      <textarea value={customerComment} onChange={(e) => setCustomerComment(e.target.value)} rows={3} placeholder="Дополнительная информация" style={{ display: "block", width: "100%", marginTop: 5, padding: 11, borderRadius: 8, border: "1px solid #555", background: "#292929", color: "white", resize: "vertical", font: "inherit" }} />
+                    </label>
+                  </div>
+                  <p style={{ color: "#bbb", marginTop: 16, lineHeight: 1.5 }}>
+                    Это предварительная заявка для расчёта комплектации. Отправка и сохранение данных в админ-панели пока не подключены.
+                  </p>
+                  <button type="button" disabled style={{ marginTop: 8, padding: "12px 20px", borderRadius: 8, background: "#555", border: 0, color: "#ddd", cursor: "not-allowed", fontWeight: 800 }}>
+                    Отправить заявку — подключим следующим этапом
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section id="contacts" className="section">
+        <div className="container">
+          <h2 className="section-title">
+            Свяжитесь с WestForge
+          </h2>
+
+          <p style={{ color: "#c4c4c4" }}>
+            Республика Молдова, г. Сороки.
+            Поможем подобрать оборудование для вашего
+            хозяйства или обсудить индивидуальный проект.
+          </p>
+        </div>
+      </section>
+
+      <style>{`
+        .hero-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .hero-custom-box {
+          margin-top: 28px;
+          max-width: 570px;
+          padding: 20px 24px;
+          border: 1px solid #e02020;
+          border-left: 5px solid #ff2020;
+          border-radius: 14px;
+          background: rgba(12, 12, 12, 0.85);
+          box-shadow: 0 12px 35px rgba(0,0,0,.25);
+        }
+
+        .hero-custom-label {
+          margin: 0 0 10px;
+          color: #ff3030;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+        }
+
+        .hero-custom-box h2 {
+          margin: 0 0 12px;
+          font-size: clamp(22px, 2.5vw, 30px);
+          line-height: 1.2;
+          color: #fff;
+        }
+
+        .hero-custom-box h2 span {
+          color: #ff2020;
+        }
+
+        .hero-custom-box p:not(.hero-custom-label) {
+          margin: 0 0 14px;
+          color: #e8e8e8;
+          font-size: 14px;
+          line-height: 1.65;
+        }
+
+        .hero-custom-box strong {
+          color: #fff;
+        }
+
+        .hero-custom-box a {
+          color: #ff4444;
+          font-size: 14px;
+          font-weight: 800;
+        }
+
+        .quality-section {
+          padding: 28px 0 8px;
+        }
+
+        .quality-box {
+          display: flex;
+          align-items: flex-start;
+          gap: 18px;
+          padding: 26px 30px;
+          background: #1c1c1c;
+          border: 1px solid #424242;
+          border-radius: 16px;
+        }
+
+        .quality-icon {
+          flex: 0 0 42px;
+          width: 42px;
+          height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #e02020;
+          color: white;
+          font-size: 25px;
+          font-weight: bold;
+        }
 
         .quality-box h2 {
           margin: 0 0 12px;
@@ -126,3 +542,4 @@
       `}</style>
     </main>
   );
+}
