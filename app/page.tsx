@@ -42,11 +42,17 @@ const products = [
 ];
 
 export default function Home() {
-  const [cart, setCart] = useState<string[]>([]);
+  type RequestItem = { id: number; title: string; quantity: number; requirements: string };
+  const [cart, setCart] = useState<RequestItem[]>([]);
+  const [nextId, setNextId] = useState(1);
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerComment, setCustomerComment] = useState("");
   const [showCart, setShowCart] = useState(false);
 
   function addToRequest(title: string) {
-    setCart((previous) => [...previous, title]);
+    setCart((previous) => [...previous, { id: nextId, title, quantity: 1, requirements: "" }]);
+    setNextId((id) => id + 1);
     setShowCart(true);
   }
 
@@ -88,9 +94,3 @@ export default function Home() {
           alignItems: "center",
           backgroundColor: "#202020",
           backgroundImage:
-            "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.48) 40%, rgba(0,0,0,.08) 100%), url('/hero-desktop.webp')",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
