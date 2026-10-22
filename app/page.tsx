@@ -1,96 +1,128 @@
-"use client";
 
-import { useState } from "react";
+        .quality-box h2 {
+          margin: 0 0 12px;
+          font-size: clamp(22px, 2.5vw, 30px);
+        }
 
-import Link from "next/link";
+        .quality-box h2 span {
+          color: #ff3030;
+        }
 
-const products = [
-  {
-    title: "Плёнкоукладчик 1",
-    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
-    icon: "🚜",
-    image: "/1.png",
-  },
-  {
-    title: "Плёнкоукладчик 2",
-    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
-    icon: "🚜",
-    image: "/2.webp",
-  },
-  {
-    title: "Плёнкоукладчик 3",
-    description: "Оборудование для укладки плёнки в сельском хозяйстве.",
-    icon: "🚜",
-    image: "/3.webp",
-  },
-  {
-    title: "Садовые платформы",
-    description: "Платформы для работы в садах и сбора урожая.",
-    icon: "🌳",
-  },
-  {
-    title: "Садовые тележки",
-    description: "Транспортировка контейнеров и урожая.",
-    icon: "🛞",
-  },
-  {
-    title: "Изготовление на заказ",
-    description:
-      "Адаптация оборудования под ваши задачи после технической оценки.",
-    icon: "⚙️",
-  },
-];
+        .quality-box p {
+          max-width: 850px;
+          margin: 0 0 10px;
+          color: #d5d5d5;
+          font-size: 15px;
+          line-height: 1.65;
+        }
 
-export default function Home() {
-  type RequestItem = { id: number; title: string; quantity: number; requirements: string };
-  const [cart, setCart] = useState<RequestItem[]>([]);
-  const [nextId, setNextId] = useState(1);
-  const [customerName, setCustomerName] = useState("");
-  const [customerPhone, setCustomerPhone] = useState("");
-  const [customerComment, setCustomerComment] = useState("");
-  const [showCart, setShowCart] = useState(false);
+        .quality-box p:last-child {
+          margin-bottom: 0;
+        }
 
-  function addToRequest(title: string) {
-    setCart((previous) => [...previous, { id: nextId, title, quantity: 1, requirements: "" }]);
-    setNextId((id) => id + 1);
-    setShowCart(true);
-  }
+        .quality-box strong {
+          color: #fff;
+        }
 
-  return (
-    <main>
-      <header
-        style={{
-          background: "#111",
-          borderBottom: "1px solid #333",
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            minHeight: 64,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 16,
-          }}
-        >
-          <Link href="/" style={{ fontSize: 24, fontWeight: 900 }}>
-            WEST<span style={{ color: "#e00000" }}>FORGE</span>
-          </Link>
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 14px;
+        }
 
-          <nav style={{ display: "flex", gap: 18, fontSize: 13 }}>
-            <a href="#products">Продукция</a>
-            <a href="#contacts">Контакты</a>
-          </nav>
-        </div>
-      </header>
+        .product-card {
+          overflow: hidden;
+          border-radius: 14px;
+          background: #1b1b1b;
+          border: 1px solid #333;
+        }
 
-      <section
-        className="hero"
-        style={{
-          position: "relative",
-          minHeight: 650,
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "#202020",
-          backgroundImage:
+        .product-placeholder {
+          height: 140px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #282828;
+          font-size: 46px;
+        }
+
+        .product-content {
+          padding: 14px;
+        }
+
+        .product-content h3 {
+          margin: 0 0 8px;
+          font-size: 16px;
+        }
+
+        .product-content p {
+          margin: 0;
+          color: #bdbdbd;
+          font-size: 13px;
+          line-height: 1.5;
+        }
+
+        @media (max-width: 800px) {
+          .product-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-custom-box {
+            margin-top: 20px;
+            padding: 16px;
+          }
+
+          .hero-custom-box h2 {
+            font-size: 22px;
+          }
+
+          .hero-custom-box p:not(.hero-custom-label) {
+            font-size: 13px;
+          }
+
+          .quality-section {
+            padding-top: 16px;
+          }
+
+          .quality-box {
+            padding: 18px;
+            gap: 12px;
+          }
+
+          .quality-icon {
+            flex-basis: 32px;
+            width: 32px;
+            height: 32px;
+            font-size: 20px;
+          }
+
+          .quality-box p {
+            font-size: 13px;
+          }
+
+          .product-grid {
+            gap: 10px;
+          }
+
+          .product-placeholder {
+            height: 105px;
+            font-size: 36px;
+          }
+
+          .product-content {
+            padding: 10px;
+          }
+
+          .product-content h3 {
+            font-size: 14px;
+          }
+
+          .product-content p {
+            font-size: 12px;
+          }
+        }
+      `}</style>
+    </main>
+  );
